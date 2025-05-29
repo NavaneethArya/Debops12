@@ -1,9 +1,317 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Simple Spring Boot Website</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevOps Solutions</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.devops-banner {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  padding: 10px;
+}
+
+.team-photos {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.your-photo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.your-photo:hover {
+  transform: scale(1.1);
+}
+
+main {
+  padding: 40px 30px;
+}
+
+.intro h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.intro h1 span {
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  max-width: 750px;
+  color: #e6f7ff;
+}
+
+.what-is-devops {
+  margin-top: 50px;
+}
+
+.what-is-devops h2 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.what-is-devops ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.what-is-devops ul li {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  margin: 10px 0;
+  border-left: 5px solid #00e5ff;
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+.tools {
+  margin-top: 50px;
+}
+
+.tools h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.tools-grid div {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 14px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.tools-grid div:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  backdrop-filter: blur(5px);
+}
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            color: #00e5ff;
+        }
+
+        .student-info {
+            text-align: right;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .team-photos {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .your-photo {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+        }
+
+        
+
+        .devops-capability-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .devops-block {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 6px solid #00e5ff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .devops-block:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .devops-block h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .devops-block p {
+            font-size: 0.95rem;
+            color: #d9faff;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tools-grid div {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 14px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+
+        .tools-grid div:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 40px;
+            backdrop-filter: blur(5px);
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello from Spring Boot!</h1>
+    <nav>
+        <h1>DevOps Solutions</h1>
+    </nav>
+
+    <main>
+        <section class="intro">
+            <h1>DevOps Done Right</h1>
+            <p>Specializing in automation, cloud-native deployments, and continuous delivery pipelines to optimize your DevOps transformation journey.</p>
+        </section>
+
+        <section class="what-is-devops">
+            <h2>🔧 Our DevOps Capabilities</h2>
+            <p>We streamline your development and operations by implementing industry-best DevOps strategies and tools tailored to your needs.</p>
+            <div class="devops-capability-blocks">
+                <div class="devops-block">
+                    <h3>🔄 CI/CD Pipelines</h3>
+                    <p>Automated build, test, and deployment pipelines for faster releases and minimal downtime.</p>
+                </div>
+                <div class="devops-block">
+                    <h3>📦 Container Orchestration</h3>
+                    <p>Manage and scale containerized applications efficiently using Kubernetes and Docker Swarm.</p>
+                </div>
+                <div class="devops-block">
+                    <h3>⚙ Infrastructure Automation</h3>
+                    <p>Use tools like Terraform and Ansible to automate infrastructure provisioning and configuration.</p>
+                </div>
+                <div class="devops-block">
+                    <h3>📈 Monitoring & Logging</h3>
+                    <p>Get full visibility into systems with real-time monitoring, logs, and alerting tools.</p>
+                </div>
+                <div class="devops-block">
+                    <h3>🌩 Multi-Cloud Solutions</h3>
+                    <p>Deploy and manage workloads across multiple cloud environments seamlessly.</p>
+                </div>
+                <div class="devops-block">
+                    <h3>🔐 DevSecOps</h3>
+                    <p>Integrate security practices into every phase of the DevOps lifecycle.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tools">
+            <h2>🧰 Tools We Master</h2>
+            <div class="tools-grid">
+                <div>Git</div>
+                <div>Docker</div>
+                <div>Kubernetes</div>
+                <div>Jenkins</div>
+                <div>Terraform</div>
+                <div>Ansible</div>
+                <div>Prometheus</div>
+                <div>Grafana</div>
+                <div>Azure DevOps</div>
+                <div>AWS</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DevOps Solutions | Experts in DevOps Transformation</p>
+    </footer>
 </body>
 </html>
